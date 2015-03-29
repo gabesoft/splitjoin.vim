@@ -25,8 +25,8 @@ function! sj#vim#Join()
   if next_lineno > line('$') || next_line !~ continuation_pattern
     return 0
   else
-    exe next_lineno.'s/'.continuation_pattern.'//'
-    exe current_lineno.','.next_lineno.'join'
+    exe 'silent ' . next_lineno.'s/'.continuation_pattern.'//'
+    exe 'silent ' . current_lineno.','.next_lineno.'join'
 
     if g:splitjoin_normalize_whitespace
       call sj#CompressWhitespaceOnLine()
